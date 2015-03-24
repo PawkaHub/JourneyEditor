@@ -1,0 +1,303 @@
+@import 'nib'
+
+darkest = #1C1F26
+dark = #232830
+halfDark = rgba(35,40,48,0.5)
+medium = rgba(43,48,59,1)
+halfMedium = rgba(43,48,59,0.5)
+select = #3D4550
+text = rgb(192,197,206)
+halfText = rgba(192,197,206,0.5)
+minimumText = rgba(192,197,206,0.2)
+
+::-webkit-scrollbar
+  display none
+
+html, body
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  background darkest
+  font 14px/normal 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace
+  overflow hidden
+  padding 0
+  margin 0
+a
+  color inherit
+  text-decoration none
+
+hr
+  border 0px
+  border-top 1px solid #ccc
+
+button
+  position relative
+
+textarea
+  tab-size 4
+  white-space pre
+  word-wrap normal
+  &.success
+    border-color #8b8 !important
+  &.fail
+    border-color #f00 !important
+    background-color rgba(255,0,0,0.05)
+
+textarea, input
+  outline none
+
+.Panel
+  -moz-user-select none
+  -webkit-user-select none
+  -ms-user-select none
+  -o-user-select none
+  user-select none
+  .Text
+    font-size 10px
+    padding 0 0 0 5px
+  &.Collapsible
+    .Static
+      padding 8px 0 8px 8px
+      font-size 10px
+      .Button
+        float left
+        margin-right 6px
+        width 0px
+        height 0px
+        border 6px solid transparent
+    &.collapsed
+      .Static
+        .Button
+          margin-top 2px
+          border-left-color #bbb
+      .Content
+        display none
+    &:not(.collapsed)
+      .Static
+        .Button
+          margin-top 6px
+          border-top-color #bbb
+
+.CodeMirror
+  position absolute !important
+  top 37px
+  width 100% !important
+  height calc(100% - 37px) !important
+  .errorLine
+    background rgba(255,0,0,0.25)
+  .esprima-error
+    color #f00
+    text-align right
+    padding 0px 20px
+
+.type
+  position relative
+  top -1px
+  background #ddd
+  display inline-block
+  width 10px
+  height 10px
+  border-radius 50%
+  margin-right 4px
+  &.Scene
+    background #ccccff
+  &.Object3D
+    background #aaaaee
+  &.Mesh
+    background #8888ee
+  &.PointLight
+    background #dddd00
+  &.Geometry
+    background #88ff88
+  &.BoxGeometry
+    background #bbeebb
+  &.Material
+    background transparent
+  &.MeshPhongMaterial
+    background transparent
+
+.Outliner
+  color rgba(192, 197, 206, 0.5)
+  background darkest
+  padding 5px 5px 5px 0
+  width 100%
+  height 140px
+  font-size 12px
+  cursor pointer
+  overflow auto
+  outline none
+  .option
+    padding 0 5px 0 10px
+    white-space nowrap
+    line-height 26px
+    height 24px
+    &.active
+      background-color #2B303B
+
+.Panel
+  &.Collapsible
+    &.collapsed
+      .Static
+        .Button
+          border-left-color #444
+    &:not(.collapsed)
+      .Static
+        .Button
+          border-top-color #444
+
+#viewport
+  position absolute
+  top 0
+  left 0
+  right 0
+  bottom 0
+
+#script
+  position absolute
+  top 32px
+  left 0px
+  right 300px
+  bottom 32px
+  opacity 0.9
+
+#player
+  position absolute
+  top 0
+  left 0
+  right 0
+  bottom 0
+
+#menubar
+  position absolute
+  width 240px
+  height 32px
+  background dark
+  padding 0px
+  margin 0px
+  right 0px
+  top 0px
+  z-index 1
+  .menu
+    float left
+    cursor pointer
+    padding-right 8px
+    &.right
+      float right
+      cursor auto
+      text-align right
+    .title
+      display inline-block
+      color rgb(192, 197, 206)
+      margin 0px
+      padding 8px
+    .options
+      position absolute
+      display none
+      padding 5px 0px
+      background dark
+      width 150px
+      hr
+        border-color medium
+      .option
+        color rgb(192, 197, 206)
+        background-color transparent
+        padding 5px 10px
+        margin 0px !important
+        &:hover
+          color #fff
+          background-color #08f
+        &:active
+          background transparent
+    &:hover
+      .options
+        display block
+
+#sidebar
+  position absolute
+  right 0px
+  top 32px
+  bottom 0px
+  width 240px
+  background-color dark
+  overflow-y auto
+  overflow-x hidden
+  *
+    vertical-align middle
+  input
+    &.Number
+      color rgba(192, 197, 206, 0.5)
+      &::selection
+        background transparent
+  select
+    background dark
+    &:focus
+      outline none
+  .Panel
+    &.collapsed
+      margin-bottom 0px
+    &.Scene
+      .Static
+        display none
+    &.Material
+      .Static
+        display none
+      .Content
+        .Panel
+          height 24px
+          margin-bottom 0
+      canvas
+        border solid 1px #5A5A5A
+    &.Mesh
+      .Static
+        display none
+    &.Geometry
+      .Static
+        display none
+  & > .Panel
+    color rgb(192, 197, 206)
+    margin-bottom 0
+    border-top 1px solid medium
+
+#sidebar input, #sidebar textarea, #sidebar select
+  background darkest
+  border 1px solid transparent
+  color rgb(192, 197, 206)
+  padding 0 5px 0 5px
+  -webkit-appearance none
+  border-radius 0
+  -webkit-user-select none
+  user-select none
+
+input
+  &.Number
+    font-size 12px
+    background-color transparent!important
+    border 1px solid transparent
+    padding 2px
+    cursor col-resize
+    margin-top 2px
+    margin-bottom 10px
+  &.Color
+    position absolute
+    &::-webkit-color-swatch-wrapper
+      padding 0
+    &::-webkit-color-swatch
+      border none
+
+#toolbar
+  position absolute
+  left 0px
+  right 300px
+  bottom 0px
+  height 32px
+  background-color #111
+  color medium
+  *
+    vertical-align middle
+  .Panel
+    padding 4px
+    color rgb(192, 197, 206)
+  button
+    margin-right 6px

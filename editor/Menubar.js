@@ -2,9 +2,9 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-var Menubar = function ( editor ) {
+window.Menubar = function ( editor ) {
 
-	var container = new UI.Panel();
+	var container = new Interface.Panel();
 	container.setId( 'menubar' );
 
 	container.add( new Menubar.File( editor ) );

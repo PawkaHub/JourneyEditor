@@ -4,15 +4,15 @@
 
 Menubar.Add = function ( editor ) {
 
-	var container = new UI.Panel();
+	var container = new Interface.Panel();
 	container.setClass( 'menu' );
 
-	var title = new UI.Panel();
+	var title = new Interface.Panel();
 	title.setClass( 'title' );
 	title.setTextContent( 'Add' );
 	container.add( title );
 
-	var options = new UI.Panel();
+	var options = new Interface.Panel();
 	options.setClass( 'options' );
 	container.add( options );
 
@@ -32,7 +32,7 @@ Menubar.Add = function ( editor ) {
 
 	// Group
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Group' );
 	option.onClick( function () {
@@ -48,11 +48,11 @@ Menubar.Add = function ( editor ) {
 
 	//
 
-	options.add( new UI.HorizontalRule() );
+	options.add( new Interface.HorizontalRule() );
 
 	// Plane
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Plane' );
 	option.onClick( function () {
@@ -76,7 +76,7 @@ Menubar.Add = function ( editor ) {
 
 	// Box
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Box' );
 	option.onClick( function () {
@@ -101,7 +101,7 @@ Menubar.Add = function ( editor ) {
 
 	// Cylinder
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Cylinder' );
 	option.onClick( function () {
@@ -125,11 +125,11 @@ Menubar.Add = function ( editor ) {
 
 	//
 
-	options.add( new UI.HorizontalRule() );
+	options.add( new Interface.HorizontalRule() );
 
 	// DirectionalLight
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'DirectionalLight' );
 	option.onClick( function () {
@@ -151,11 +151,11 @@ Menubar.Add = function ( editor ) {
 
 	//
 
-	options.add( new UI.HorizontalRule() );
+	options.add( new Interface.HorizontalRule() );
 
 	// PerspectiveCamera
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'PerspectiveCamera' );
 	option.onClick( function() {

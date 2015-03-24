@@ -4,24 +4,24 @@
 
 Sidebar.Geometry.Geometry = function ( signals ) {
 
-	var container = new UI.Panel();
+	var container = new Interface.Panel();
 
 	// vertices
 
-	var verticesRow = new UI.Panel();
-	var vertices = new UI.Text().setFontSize( '12px' );
+	var verticesRow = new Interface.Panel();
+	var vertices = new Interface.Text().setFontSize( '12px' );
 
-	verticesRow.add( new UI.Text( 'Vertices' ).setWidth( '90px' ) );
+	verticesRow.add( new Interface.Text( 'Vertices' ).setWidth( '90px' ) );
 	verticesRow.add( vertices );
 
 	container.add( verticesRow );
 
 	// faces
 
-	var facesRow = new UI.Panel();
-	var faces = new UI.Text().setFontSize( '12px' );
+	var facesRow = new Interface.Panel();
+	var faces = new Interface.Text().setFontSize( '12px' );
 
-	facesRow.add( new UI.Text( 'Faces' ).setWidth( '90px' ) );
+	facesRow.add( new Interface.Text( 'Faces' ).setWidth( '90px' ) );
 	facesRow.add( faces );
 
 	container.add( facesRow );
@@ -34,7 +34,7 @@ Sidebar.Geometry.Geometry = function ( signals ) {
 
 		var geometry = object.geometry;
 
-		if ( geometry instanceof THREE.Geometry ) { 
+		if ( geometry instanceof THREE.Geometry ) {
 
 			container.setDisplay( 'block' );
 

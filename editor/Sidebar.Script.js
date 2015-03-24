@@ -6,7 +6,7 @@ Sidebar.Script = function ( editor ) {
 
 	var signals = editor.signals;
 
-	var container = new UI.CollapsiblePanel();
+	var container = new Interface.CollapsiblePanel();
 	container.setCollapsed( editor.config.getKey( 'ui/sidebar/script/collapsed' ) );
 	container.onCollapsedChange( function ( boolean ) {
 
@@ -15,15 +15,15 @@ Sidebar.Script = function ( editor ) {
 	} );
 	container.setDisplay( 'none' );
 
-	container.addStatic( new UI.Text( 'Script' ).setTextTransform( 'uppercase' ) );
-	container.add( new UI.Break() );
+	container.addStatic( new Interface.Text( 'Script' ).setTextTransform( 'uppercase' ) );
+	container.add( new Interface.Break() );
 
 	//
 
-	var scriptsContainer = new UI.Panel();
+	var scriptsContainer = new Interface.Panel();
 	container.add( scriptsContainer );
 
-	var newScript = new UI.Button( 'New' );
+	var newScript = new Interface.Button( 'New' );
 	newScript.onClick( function () {
 
 		var script = { name: '', source: 'function update( event ) {}' };
@@ -33,7 +33,7 @@ Sidebar.Script = function ( editor ) {
 	container.add( newScript );
 
 	/*
-	var loadScript = new UI.Button( 'Load' );
+	var loadScript = new Interface.Button( 'Load' );
 	loadScript.setMarginLeft( '4px' );
 	container.add( loadScript );
 	*/
@@ -53,7 +53,7 @@ Sidebar.Script = function ( editor ) {
 
 				( function ( object, script ) {
 
-					var name = new UI.Input( script.name ).setWidth( '130px' ).setFontSize( '12px' );
+					var name = new Interface.Input( script.name ).setWidth( '130px' ).setFontSize( '12px' );
 					name.onChange( function () {
 
 						script.name = this.getValue();
@@ -63,7 +63,7 @@ Sidebar.Script = function ( editor ) {
 					} );
 					scriptsContainer.add( name );
 
-					var edit = new UI.Button( 'Edit' );
+					var edit = new Interface.Button( 'Edit' );
 					edit.setMarginLeft( '4px' );
 					edit.onClick( function () {
 
@@ -72,7 +72,7 @@ Sidebar.Script = function ( editor ) {
 					} );
 					scriptsContainer.add( edit );
 
-					var remove = new UI.Button( 'Remove' );
+					var remove = new Interface.Button( 'Remove' );
 					remove.setMarginLeft( '4px' );
 					remove.onClick( function () {
 
@@ -85,7 +85,7 @@ Sidebar.Script = function ( editor ) {
 					} );
 					scriptsContainer.add( remove );
 
-					scriptsContainer.add( new UI.Break() );
+					scriptsContainer.add( new Interface.Break() );
 
 				} )( object, scripts[ i ] )
 

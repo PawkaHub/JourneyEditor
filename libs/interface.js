@@ -2,15 +2,15 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-var UI = {};
+window.Interface = {};
 
-UI.Element = function ( dom ) {
+Interface.Element = function ( dom ) {
 
 	this.dom = dom;
 
 };
 
-UI.Element.prototype = {
+Interface.Element.prototype = {
 
 	setId: function ( id ) {
 
@@ -66,7 +66,7 @@ properties.forEach( function ( property ) {
 
 	var method = 'set' + property.substr( 0, 1 ).toUpperCase() + property.substr( 1, property.length );
 
-	UI.Element.prototype[ method ] = function () {
+	Interface.Element.prototype[ method ] = function () {
 
 		this.setStyle( property, arguments );
 		return this;
@@ -83,7 +83,7 @@ events.forEach( function ( event ) {
 
 	var method = 'on' + event;
 
-	UI.Element.prototype[ method ] = function ( callback ) {
+	Interface.Element.prototype[ method ] = function ( callback ) {
 
 		this.dom.addEventListener( event.toLowerCase(), callback.bind( this ), false );
 
@@ -96,9 +96,9 @@ events.forEach( function ( event ) {
 
 // Panel
 
-UI.Panel = function () {
+Interface.Panel = function () {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var dom = document.createElement( 'div' );
 	dom.className = 'Panel';
@@ -108,22 +108,22 @@ UI.Panel = function () {
 	return this;
 };
 
-UI.Panel.prototype = Object.create( UI.Element.prototype );
-UI.Panel.prototype.constructor = UI.Panel;
+Interface.Panel.prototype = Object.create( Interface.Element.prototype );
+Interface.Panel.prototype.constructor = Interface.Panel;
 
-UI.Panel.prototype.add = function () {
+Interface.Panel.prototype.add = function () {
 
 	for ( var i = 0; i < arguments.length; i ++ ) {
 
 		var argument = arguments[ i ];
 
-		if ( argument instanceof UI.Element ) {
+		if ( argument instanceof Interface.Element ) {
 
 			this.dom.appendChild( argument.dom );
 
 		} else {
 
-			console.error( 'UI.Panel:', argument, 'is not an instance of UI.Element.' )
+			console.error( 'Interface.Panel:', argument, 'is not an instance of Interface.Element.' )
 
 		}
 
@@ -134,19 +134,19 @@ UI.Panel.prototype.add = function () {
 };
 
 
-UI.Panel.prototype.remove = function () {
+Interface.Panel.prototype.remove = function () {
 
 	for ( var i = 0; i < arguments.length; i ++ ) {
 
 		var argument = arguments[ i ];
 
-		if ( argument instanceof UI.Element ) {
+		if ( argument instanceof Interface.Element ) {
 
 			this.dom.removeChild( argument.dom );
 
 		} else {
 
-			console.error( 'UI.Panel:', argument, 'is not an instance of UI.Element.' )
+			console.error( 'Interface.Panel:', argument, 'is not an instance of Interface.Element.' )
 
 		}
 
@@ -156,7 +156,7 @@ UI.Panel.prototype.remove = function () {
 
 };
 
-UI.Panel.prototype.clear = function () {
+Interface.Panel.prototype.clear = function () {
 
 	while ( this.dom.children.length ) {
 
@@ -169,26 +169,26 @@ UI.Panel.prototype.clear = function () {
 
 // Collapsible Panel
 
-UI.CollapsiblePanel = function () {
+Interface.CollapsiblePanel = function () {
 
-	UI.Panel.call( this );
+	Interface.Panel.call( this );
 
 	this.setClass( 'Panel Collapsible' );
 
 	var scope = this;
 
-	this.static = new UI.Panel();
+	this.static = new Interface.Panel();
 	this.static.setClass( 'Static' );
 	/*this.static.onClick( function () {
 		scope.toggle();
 	} );*/
 	this.dom.appendChild( this.static.dom );
 
-	this.contents = new UI.Panel();
+	this.contents = new Interface.Panel();
 	this.contents.setClass( 'Content' );
 	this.dom.appendChild( this.contents.dom );
 
-	/*var button = new UI.Panel();
+	/*var button = new Interface.Panel();
 	button.setClass( 'Button' );
 	this.static.add( button );*/
 
@@ -198,70 +198,70 @@ UI.CollapsiblePanel = function () {
 
 };
 
-UI.CollapsiblePanel.prototype = Object.create( UI.Panel.prototype );
-UI.CollapsiblePanel.prototype.constructor = UI.CollapsiblePanel;
+Interface.CollapsiblePanel.prototype = Object.create( Interface.Panel.prototype );
+Interface.CollapsiblePanel.prototype.constructor = Interface.CollapsiblePanel;
 
-UI.CollapsiblePanel.prototype.addStatic = function () {
+Interface.CollapsiblePanel.prototype.addStatic = function () {
 
 	this.static.add.apply( this.static, arguments );
 	return this;
 
 };
 
-UI.CollapsiblePanel.prototype.removeStatic = function () {
+Interface.CollapsiblePanel.prototype.removeStatic = function () {
 
 	this.static.remove.apply( this.static, arguments );
 	return this;
 
 };
 
-UI.CollapsiblePanel.prototype.clearStatic = function () {
+Interface.CollapsiblePanel.prototype.clearStatic = function () {
 
 	this.static.clear();
 	return this;
 
 };
 
-UI.CollapsiblePanel.prototype.add = function () {
+Interface.CollapsiblePanel.prototype.add = function () {
 
 	this.contents.add.apply( this.contents, arguments );
 	return this;
 
 };
 
-UI.CollapsiblePanel.prototype.remove = function () {
+Interface.CollapsiblePanel.prototype.remove = function () {
 
 	this.contents.remove.apply( this.contents, arguments );
 	return this;
 
 };
 
-UI.CollapsiblePanel.prototype.clear = function () {
+Interface.CollapsiblePanel.prototype.clear = function () {
 
 	this.contents.clear();
 	return this;
 
 };
 
-UI.CollapsiblePanel.prototype.toggle = function() {
+Interface.CollapsiblePanel.prototype.toggle = function() {
 
 	this.setCollapsed( !this.isCollapsed );
 
 };
 
-UI.CollapsiblePanel.prototype.collapse = function() {
+Interface.CollapsiblePanel.prototype.collapse = function() {
 
 	this.setCollapsed( true );
 
 };
 
-UI.CollapsiblePanel.prototype.expand = function() {
+Interface.CollapsiblePanel.prototype.expand = function() {
 
 	this.setCollapsed( false );
 
 };
 
-UI.CollapsiblePanel.prototype.setCollapsed = function( boolean ) {
+Interface.CollapsiblePanel.prototype.setCollapsed = function( boolean ) {
 
 	if ( boolean ) {
 
@@ -283,7 +283,7 @@ UI.CollapsiblePanel.prototype.setCollapsed = function( boolean ) {
 
 };
 
-UI.CollapsiblePanel.prototype.onCollapsedChange = function ( callback ) {
+Interface.CollapsiblePanel.prototype.onCollapsedChange = function ( callback ) {
 
 	this.onCollapsedChangeCallback = callback;
 
@@ -291,9 +291,9 @@ UI.CollapsiblePanel.prototype.onCollapsedChange = function ( callback ) {
 
 // Text
 
-UI.Text = function ( text ) {
+Interface.Text = function ( text ) {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var dom = document.createElement( 'span' );
 	dom.className = 'Text';
@@ -308,16 +308,16 @@ UI.Text = function ( text ) {
 
 };
 
-UI.Text.prototype = Object.create( UI.Element.prototype );
-UI.Text.prototype.constructor = UI.Text;
+Interface.Text.prototype = Object.create( Interface.Element.prototype );
+Interface.Text.prototype.constructor = Interface.Text;
 
-UI.Text.prototype.getValue = function () {
+Interface.Text.prototype.getValue = function () {
 
 	return this.dom.textContent;
 
 };
 
-UI.Text.prototype.setValue = function ( value ) {
+Interface.Text.prototype.setValue = function ( value ) {
 
 	if ( value !== undefined ) {
 
@@ -332,9 +332,9 @@ UI.Text.prototype.setValue = function ( value ) {
 
 // Input
 
-UI.Input = function ( text ) {
+Interface.Input = function ( text ) {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var scope = this;
 
@@ -358,16 +358,16 @@ UI.Input = function ( text ) {
 
 };
 
-UI.Input.prototype = Object.create( UI.Element.prototype );
-UI.Input.prototype.constructor = UI.Input;
+Interface.Input.prototype = Object.create( Interface.Element.prototype );
+Interface.Input.prototype.constructor = Interface.Input;
 
-UI.Input.prototype.getValue = function () {
+Interface.Input.prototype.getValue = function () {
 
 	return this.dom.value;
 
 };
 
-UI.Input.prototype.setValue = function ( value ) {
+Interface.Input.prototype.setValue = function ( value ) {
 
 	this.dom.value = value;
 
@@ -378,9 +378,9 @@ UI.Input.prototype.setValue = function ( value ) {
 
 // TextArea
 
-UI.TextArea = function () {
+Interface.TextArea = function () {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var scope = this;
 
@@ -413,16 +413,16 @@ UI.TextArea = function () {
 
 };
 
-UI.TextArea.prototype = Object.create( UI.Element.prototype );
-UI.TextArea.prototype.constructor = UI.TextArea;
+Interface.TextArea.prototype = Object.create( Interface.Element.prototype );
+Interface.TextArea.prototype.constructor = Interface.TextArea;
 
-UI.TextArea.prototype.getValue = function () {
+Interface.TextArea.prototype.getValue = function () {
 
 	return this.dom.value;
 
 };
 
-UI.TextArea.prototype.setValue = function ( value ) {
+Interface.TextArea.prototype.setValue = function ( value ) {
 
 	this.dom.value = value;
 
@@ -433,9 +433,9 @@ UI.TextArea.prototype.setValue = function ( value ) {
 
 // Select
 
-UI.Select = function () {
+Interface.Select = function () {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var scope = this;
 
@@ -449,10 +449,10 @@ UI.Select = function () {
 
 };
 
-UI.Select.prototype = Object.create( UI.Element.prototype );
-UI.Select.prototype.constructor = UI.Select;
+Interface.Select.prototype = Object.create( Interface.Element.prototype );
+Interface.Select.prototype.constructor = Interface.Select;
 
-UI.Select.prototype.setMultiple = function ( boolean ) {
+Interface.Select.prototype.setMultiple = function ( boolean ) {
 
 	this.dom.multiple = boolean;
 
@@ -460,7 +460,7 @@ UI.Select.prototype.setMultiple = function ( boolean ) {
 
 };
 
-UI.Select.prototype.setOptions = function ( options ) {
+Interface.Select.prototype.setOptions = function ( options ) {
 
 	var selected = this.dom.value;
 
@@ -485,13 +485,13 @@ UI.Select.prototype.setOptions = function ( options ) {
 
 };
 
-UI.Select.prototype.getValue = function () {
+Interface.Select.prototype.getValue = function () {
 
 	return this.dom.value;
 
 };
 
-UI.Select.prototype.setValue = function ( value ) {
+Interface.Select.prototype.setValue = function ( value ) {
 
 	value = String( value );
 
@@ -507,9 +507,9 @@ UI.Select.prototype.setValue = function ( value ) {
 
 // Checkbox
 
-UI.Checkbox = function ( boolean ) {
+Interface.Checkbox = function ( boolean ) {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var scope = this;
 
@@ -524,16 +524,16 @@ UI.Checkbox = function ( boolean ) {
 
 };
 
-UI.Checkbox.prototype = Object.create( UI.Element.prototype );
-UI.Checkbox.prototype.constructor = UI.Checkbox;
+Interface.Checkbox.prototype = Object.create( Interface.Element.prototype );
+Interface.Checkbox.prototype.constructor = Interface.Checkbox;
 
-UI.Checkbox.prototype.getValue = function () {
+Interface.Checkbox.prototype.getValue = function () {
 
 	return this.dom.checked;
 
 };
 
-UI.Checkbox.prototype.setValue = function ( value ) {
+Interface.Checkbox.prototype.setValue = function ( value ) {
 
 	if ( value !== undefined ) {
 
@@ -548,9 +548,9 @@ UI.Checkbox.prototype.setValue = function ( value ) {
 
 // Color
 
-UI.Color = function () {
+Interface.Color = function () {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var scope = this;
 
@@ -575,22 +575,22 @@ UI.Color = function () {
 
 };
 
-UI.Color.prototype = Object.create( UI.Element.prototype );
-UI.Color.prototype.constructor = UI.Color;
+Interface.Color.prototype = Object.create( Interface.Element.prototype );
+Interface.Color.prototype.constructor = Interface.Color;
 
-UI.Color.prototype.getValue = function () {
+Interface.Color.prototype.getValue = function () {
 
 	return this.dom.value;
 
 };
 
-UI.Color.prototype.getHexValue = function () {
+Interface.Color.prototype.getHexValue = function () {
 
 	return parseInt( this.dom.value.substr( 1 ), 16 );
 
 };
 
-UI.Color.prototype.setValue = function ( value ) {
+Interface.Color.prototype.setValue = function ( value ) {
 
 	this.dom.value = value;
 
@@ -598,7 +598,7 @@ UI.Color.prototype.setValue = function ( value ) {
 
 };
 
-UI.Color.prototype.setHexValue = function ( hex ) {
+Interface.Color.prototype.setHexValue = function ( hex ) {
 
 	this.dom.value = '#' + ( '000000' + hex.toString( 16 ) ).slice( -6 );
 
@@ -609,9 +609,9 @@ UI.Color.prototype.setHexValue = function ( hex ) {
 
 // Number
 
-UI.Number = function ( number ) {
+Interface.Number = function ( number ) {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var scope = this;
 
@@ -735,16 +735,16 @@ UI.Number = function ( number ) {
 
 };
 
-UI.Number.prototype = Object.create( UI.Element.prototype );
-UI.Number.prototype.constructor = UI.Number;
+Interface.Number.prototype = Object.create( Interface.Element.prototype );
+Interface.Number.prototype.constructor = Interface.Number;
 
-UI.Number.prototype.getValue = function () {
+Interface.Number.prototype.getValue = function () {
 
 	return parseFloat( this.dom.value );
 
 };
 
-UI.Number.prototype.setValue = function ( value ) {
+Interface.Number.prototype.setValue = function ( value ) {
 
 	if ( value !== undefined ) {
 
@@ -756,7 +756,7 @@ UI.Number.prototype.setValue = function ( value ) {
 
 };
 
-UI.Number.prototype.setRange = function ( min, max ) {
+Interface.Number.prototype.setRange = function ( min, max ) {
 
 	this.min = min;
 	this.max = max;
@@ -765,7 +765,7 @@ UI.Number.prototype.setRange = function ( min, max ) {
 
 };
 
-UI.Number.prototype.setPrecision = function ( precision ) {
+Interface.Number.prototype.setPrecision = function ( precision ) {
 
 	this.precision = precision;
 
@@ -776,9 +776,9 @@ UI.Number.prototype.setPrecision = function ( precision ) {
 
 // Integer
 
-UI.Integer = function ( number ) {
+Interface.Integer = function ( number ) {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var scope = this;
 
@@ -899,16 +899,16 @@ UI.Integer = function ( number ) {
 
 };
 
-UI.Integer.prototype = Object.create( UI.Element.prototype );
-UI.Integer.prototype.constructor = UI.Integer;
+Interface.Integer.prototype = Object.create( Interface.Element.prototype );
+Interface.Integer.prototype.constructor = Interface.Integer;
 
-UI.Integer.prototype.getValue = function () {
+Interface.Integer.prototype.getValue = function () {
 
 	return parseInt( this.dom.value );
 
 };
 
-UI.Integer.prototype.setValue = function ( value ) {
+Interface.Integer.prototype.setValue = function ( value ) {
 
 	if ( value !== undefined ) {
 
@@ -920,7 +920,7 @@ UI.Integer.prototype.setValue = function ( value ) {
 
 };
 
-UI.Integer.prototype.setRange = function ( min, max ) {
+Interface.Integer.prototype.setRange = function ( min, max ) {
 
 	this.min = min;
 	this.max = max;
@@ -932,9 +932,9 @@ UI.Integer.prototype.setRange = function ( min, max ) {
 
 // Break
 
-UI.Break = function () {
+Interface.Break = function () {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var dom = document.createElement( 'br' );
 	dom.className = 'Break';
@@ -945,15 +945,15 @@ UI.Break = function () {
 
 };
 
-UI.Break.prototype = Object.create( UI.Element.prototype );
-UI.Break.prototype.constructor = UI.Break;
+Interface.Break.prototype = Object.create( Interface.Element.prototype );
+Interface.Break.prototype.constructor = Interface.Break;
 
 
 // HorizontalRule
 
-UI.HorizontalRule = function () {
+Interface.HorizontalRule = function () {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var dom = document.createElement( 'hr' );
 	dom.className = 'HorizontalRule';
@@ -964,15 +964,15 @@ UI.HorizontalRule = function () {
 
 };
 
-UI.HorizontalRule.prototype = Object.create( UI.Element.prototype );
-UI.HorizontalRule.prototype.constructor = UI.HorizontalRule;
+Interface.HorizontalRule.prototype = Object.create( Interface.Element.prototype );
+Interface.HorizontalRule.prototype.constructor = Interface.HorizontalRule;
 
 
 // Button
 
-UI.Button = function ( value ) {
+Interface.Button = function ( value ) {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var scope = this;
 
@@ -986,10 +986,10 @@ UI.Button = function ( value ) {
 
 };
 
-UI.Button.prototype = Object.create( UI.Element.prototype );
-UI.Button.prototype.constructor = UI.Button;
+Interface.Button.prototype = Object.create( Interface.Element.prototype );
+Interface.Button.prototype.constructor = Interface.Button;
 
-UI.Button.prototype.setLabel = function ( value ) {
+Interface.Button.prototype.setLabel = function ( value ) {
 
 	this.dom.textContent = value;
 
@@ -1000,7 +1000,7 @@ UI.Button.prototype.setLabel = function ( value ) {
 
 // Dialog
 
-UI.Dialog = function ( value ) {
+Interface.Dialog = function ( value ) {
 
 	var scope = this;
 
@@ -1033,10 +1033,10 @@ UI.Dialog = function ( value ) {
 
 };
 
-UI.Dialog.prototype = Object.create( UI.Panel.prototype );
-UI.Dialog.prototype.constructor = UI.Dialog;
+Interface.Dialog.prototype = Object.create( Interface.Panel.prototype );
+Interface.Dialog.prototype.constructor = Interface.Dialog;
 
-UI.Dialog.prototype.showModal = function () {
+Interface.Dialog.prototype.showModal = function () {
 
 	this.dom.showModal();
 

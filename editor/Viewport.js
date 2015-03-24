@@ -2,15 +2,15 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-var Viewport = function ( editor ) {
+window.Viewport = function ( editor ) {
 
 	var signals = editor.signals;
 
-	var container = new UI.Panel();
+	var container = new Interface.Panel();
 	container.setId( 'viewport' );
 	container.setPosition( 'absolute' );
 
-	container.add( new Viewport.Info( editor ) );
+	//container.add( new Viewport.Info( editor ) );
 
 	var scene = editor.scene;
 	var sceneHelpers = editor.sceneHelpers;

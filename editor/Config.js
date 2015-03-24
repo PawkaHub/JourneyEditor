@@ -2,7 +2,7 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-var Config = function () {
+window.Config = function () {
 
 	var name = 'threejs-editor';
 

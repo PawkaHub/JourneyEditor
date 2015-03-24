@@ -2,7 +2,7 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-var APP = {
+window.APP = {
 
 	Player: function () {
 
@@ -89,7 +89,7 @@ var APP = {
 				if ( camera.parent === undefined ) {
 
 					// camera needs to be in the scene so camera2 matrix updates
-					
+
 					scene.add( camera );
 
 				}

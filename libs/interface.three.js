@@ -2,9 +2,9 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-UI.Texture = function ( mapping ) {
+Interface.Texture = function ( mapping ) {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var scope = this;
 
@@ -82,16 +82,16 @@ UI.Texture = function ( mapping ) {
 
 };
 
-UI.Texture.prototype = Object.create( UI.Element.prototype );
-UI.Texture.prototype.constructor = UI.Texture;
+Interface.Texture.prototype = Object.create( Interface.Element.prototype );
+Interface.Texture.prototype.constructor = Interface.Texture;
 
-UI.Texture.prototype.getValue = function () {
+Interface.Texture.prototype.getValue = function () {
 
 	return this.texture;
 
 };
 
-UI.Texture.prototype.setValue = function ( texture ) {
+Interface.Texture.prototype.setValue = function ( texture ) {
 
 	var canvas = this.dom.children[ 0 ];
 	var name = this.dom.children[ 1 ];
@@ -126,7 +126,7 @@ UI.Texture.prototype.setValue = function ( texture ) {
 
 };
 
-UI.Texture.prototype.onChange = function ( callback ) {
+Interface.Texture.prototype.onChange = function ( callback ) {
 
 	this.onChangeCallback = callback;
 
@@ -136,9 +136,9 @@ UI.Texture.prototype.onChange = function ( callback ) {
 
 // Outliner
 
-UI.Outliner = function ( editor ) {
+Interface.Outliner = function ( editor ) {
 
-	UI.Element.call( this );
+	Interface.Element.call( this );
 
 	var scope = this;
 
@@ -219,10 +219,10 @@ UI.Outliner = function ( editor ) {
 
 };
 
-UI.Outliner.prototype = Object.create( UI.Element.prototype );
-UI.Outliner.prototype.constructor = UI.Outliner;
+Interface.Outliner.prototype = Object.create( Interface.Element.prototype );
+Interface.Outliner.prototype.constructor = Interface.Outliner;
 
-UI.Outliner.prototype.setOptions = function ( options ) {
+Interface.Outliner.prototype.setOptions = function ( options ) {
 
 	var scope = this;
 
@@ -262,13 +262,13 @@ UI.Outliner.prototype.setOptions = function ( options ) {
 
 };
 
-UI.Outliner.prototype.getValue = function () {
+Interface.Outliner.prototype.getValue = function () {
 
 	return this.selectedValue;
 
 };
 
-UI.Outliner.prototype.setValue = function ( value ) {
+Interface.Outliner.prototype.setValue = function ( value ) {
 
 	for ( var i = 0; i < this.options.length; i ++ ) {
 

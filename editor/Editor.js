@@ -2,7 +2,7 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-var Editor = function () {
+window.Editor = function () {
 
 	var SIGNALS = signals;
 
@@ -96,7 +96,7 @@ Editor.prototype = {
 
 	setTheme: function ( value ) {
 
-		document.getElementById( 'theme' ).href = value;
+		//document.getElementById( 'theme' ).href = value;
 
 		this.signals.themeChanged.dispatch( value );
 

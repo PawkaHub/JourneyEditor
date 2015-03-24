@@ -2,11 +2,11 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-var Player = function ( editor ) {
+window.Player = function ( editor ) {
 
 	var signals = editor.signals;
 
-	var container = new UI.Panel();
+	var container = new Interface.Panel();
 	container.setId( 'player' );
 	container.setPosition( 'absolute' );
 	container.setDisplay( 'none' );

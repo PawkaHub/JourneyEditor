@@ -24,7 +24,7 @@ Sidebar.Material = function ( editor ) {
 
 	};
 
-	var container = new UI.CollapsiblePanel();
+	var container = new Interface.CollapsiblePanel();
 	container.setCollapsed( editor.config.getKey( 'ui/sidebar/material/collapsed' ) );
 	container.onCollapsedChange( function ( boolean ) {
 
@@ -34,21 +34,21 @@ Sidebar.Material = function ( editor ) {
 	container.setDisplay( 'none' );
 	container.dom.classList.add( 'Material' );
 
-	//container.addStatic( new UI.Text().setValue( 'Color' ) );
-	//container.add( new UI.Break() );
+	//container.addStatic( new Interface.Text().setValue( 'Color' ) );
+	//container.add( new Interface.Break() );
 
 	// uuid
 
-	//var materialUUIDRow = new UI.Panel();
-	var materialUUID = new UI.Input().setWidth( '115px' ).setFontSize( '12px' ).setDisabled( true );
-	/*var materialUUIDRenew = new UI.Button( '⟳' ).setMarginLeft( '7px' ).onClick( function () {
+	//var materialUUIDRow = new Interface.Panel();
+	var materialUUID = new Interface.Input().setWidth( '115px' ).setFontSize( '12px' ).setDisabled( true );
+	/*var materialUUIDRenew = new Interface.Button( '⟳' ).setMarginLeft( '7px' ).onClick( function () {
 
 		materialUUID.setValue( THREE.Math.generateUUID() );
 		update();
 
 	} );*/
 
-	//materialUUIDRow.add( new UI.Text( 'UUID' ).setWidth( '90px' ) );
+	//materialUUIDRow.add( new Interface.Text( 'UUID' ).setWidth( '90px' ) );
 	//materialUUIDRow.add( materialUUID );
 	//materialUUIDRow.add( materialUUIDRenew );
 
@@ -56,22 +56,22 @@ Sidebar.Material = function ( editor ) {
 
 	// name
 
-	/*var materialNameRow = new UI.Panel();
-	var materialName = new UI.Input().onChange( function () {
+	/*var materialNameRow = new Interface.Panel();
+	var materialName = new Interface.Input().onChange( function () {
 
 		editor.setMaterialName( editor.selected.material, materialName.getValue() );
 
 	} );
 
-	materialNameRow.add( new UI.Text( 'Name' ).setWidth( '90px' ) );
+	materialNameRow.add( new Interface.Text( 'Name' ).setWidth( '90px' ) );
 	materialNameRow.add( materialName );*/
 
 	//container.add( materialNameRow );
 
 	// class
 
-	/*var materialClassRow = new UI.Panel();
-	var materialClass = new UI.Select().setOptions( {
+	/*var materialClassRow = new Interface.Panel();
+	var materialClass = new Interface.Select().setOptions( {
 
 		'LineBasicMaterial': 'LineBasicMaterial',
 		'LineDashedMaterial': 'LineDashedMaterial',
@@ -86,88 +86,88 @@ Sidebar.Material = function ( editor ) {
 
 	} ).setWidth( '150px' ).setFontSize( '12px' ).onChange( update );
 
-	materialClassRow.add( new UI.Text( 'Type' ).setWidth( '90px' ) );
+	materialClassRow.add( new Interface.Text( 'Type' ).setWidth( '90px' ) );
 	materialClassRow.add( materialClass );*/
 
 	//container.add( materialClassRow );
 
 	// color
 
-	var materialColorRow = new UI.Panel();
-	var materialColor = new UI.Color().onChange( update );
+	var materialColorRow = new Interface.Panel();
+	var materialColor = new Interface.Color().onChange( update );
 
-	//materialColorRow.add( new UI.Text( 'Color' ).setWidth( '90px' ) );
+	//materialColorRow.add( new Interface.Text( 'Color' ).setWidth( '90px' ) );
 	materialColorRow.add( materialColor );
 
 	container.add( materialColorRow );
 
 	// emissive
 
-	/*var materialEmissiveRow = new UI.Panel();
-	var materialEmissive = new UI.Color().setHexValue( 0x000000 ).onChange( update );
+	/*var materialEmissiveRow = new Interface.Panel();
+	var materialEmissive = new Interface.Color().setHexValue( 0x000000 ).onChange( update );
 
-	materialEmissiveRow.add( new UI.Text( 'Emissive' ).setWidth( '90px' ) );
+	materialEmissiveRow.add( new Interface.Text( 'Emissive' ).setWidth( '90px' ) );
 	materialEmissiveRow.add( materialEmissive );
 
 	container.add( materialEmissiveRow );
 
 	// specular
 
-	var materialSpecularRow = new UI.Panel();
-	var materialSpecular = new UI.Color().setHexValue( 0x111111 ).onChange( update );
+	var materialSpecularRow = new Interface.Panel();
+	var materialSpecular = new Interface.Color().setHexValue( 0x111111 ).onChange( update );
 
-	materialSpecularRow.add( new UI.Text( 'Specular' ).setWidth( '90px' ) );
+	materialSpecularRow.add( new Interface.Text( 'Specular' ).setWidth( '90px' ) );
 	materialSpecularRow.add( materialSpecular );
 
 	container.add( materialSpecularRow );
 
 	// shininess
 
-	var materialShininessRow = new UI.Panel();
-	var materialShininess = new UI.Number( 30 ).onChange( update );
+	var materialShininessRow = new Interface.Panel();
+	var materialShininess = new Interface.Number( 30 ).onChange( update );
 
-	materialShininessRow.add( new UI.Text( 'Shininess' ).setWidth( '90px' ) );
+	materialShininessRow.add( new Interface.Text( 'Shininess' ).setWidth( '90px' ) );
 	materialShininessRow.add( materialShininess );
 
 	container.add( materialShininessRow );
 
 	// uniforms
 
-	var materialUniformsRow = new UI.Panel();
-	var materialUniforms = new UI.TextArea().setWidth( '150px' ).setHeight( '80px' );
+	var materialUniformsRow = new Interface.Panel();
+	var materialUniforms = new Interface.TextArea().setWidth( '150px' ).setHeight( '80px' );
 	materialUniforms.setValue( '{\n  "uColor": {\n    "type": "3f",\n    "value": [1, 0, 0]\n  }\n}' ).onChange( update );
 
-	materialUniformsRow.add( new UI.Text( 'Uniforms' ).setWidth( '90px' ) );
+	materialUniformsRow.add( new Interface.Text( 'Uniforms' ).setWidth( '90px' ) );
 	materialUniformsRow.add( materialUniforms );
 
 	container.add( materialUniformsRow );
 
 	// vertex shader
 
-	var materialVertexShaderRow = new UI.Panel();
-	var materialVertexShader = new UI.TextArea().setWidth( '150px' ).setHeight( '80px' );
+	var materialVertexShaderRow = new Interface.Panel();
+	var materialVertexShader = new Interface.TextArea().setWidth( '150px' ).setHeight( '80px' );
 	materialVertexShader.setValue( 'void main() {\n\tgl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );\n}' ).onChange( update );
 
-	materialVertexShaderRow.add( new UI.Text( 'Vertex Shader' ).setWidth( '90px' ) );
+	materialVertexShaderRow.add( new Interface.Text( 'Vertex Shader' ).setWidth( '90px' ) );
 	materialVertexShaderRow.add( materialVertexShader );
 
 	container.add( materialVertexShaderRow );
 
 	// fragment shader
 
-	var materialFragmentShaderRow = new UI.Panel();
-	var materialFragmentShader = new UI.TextArea().setWidth( '150px' ).setHeight( '80px' );
+	var materialFragmentShaderRow = new Interface.Panel();
+	var materialFragmentShader = new Interface.TextArea().setWidth( '150px' ).setHeight( '80px' );
 	materialFragmentShader.setValue( 'uniform vec3 uColor;\n\nvoid main() {\n\tgl_FragColor = vec4( uColor, 1.0 );\n}' ).onChange( update );
 
-	materialFragmentShaderRow.add( new UI.Text( 'Fragment Shader' ).setWidth( '90px' ) );
+	materialFragmentShaderRow.add( new Interface.Text( 'Fragment Shader' ).setWidth( '90px' ) );
 	materialFragmentShaderRow.add( materialFragmentShader );
 
 	container.add( materialFragmentShaderRow );
 
 	// vertex colors
 
-	var materialVertexColorsRow = new UI.Panel();
-	var materialVertexColors = new UI.Select().setOptions( {
+	var materialVertexColorsRow = new Interface.Panel();
+	var materialVertexColors = new Interface.Select().setOptions( {
 
 		0: 'No',
 		1: 'Face',
@@ -175,28 +175,28 @@ Sidebar.Material = function ( editor ) {
 
 	} ).onChange( update );
 
-	materialVertexColorsRow.add( new UI.Text( 'Vertex Colors' ).setWidth( '90px' ) );
+	materialVertexColorsRow.add( new Interface.Text( 'Vertex Colors' ).setWidth( '90px' ) );
 	materialVertexColorsRow.add( materialVertexColors );
 
 	container.add( materialVertexColorsRow );
 
 	// skinning
 
-	var materialSkinningRow = new UI.Panel();
-	var materialSkinning = new UI.Checkbox( false ).onChange( update );
+	var materialSkinningRow = new Interface.Panel();
+	var materialSkinning = new Interface.Checkbox( false ).onChange( update );
 
-	materialSkinningRow.add( new UI.Text( 'Skinning' ).setWidth( '90px' ) );
+	materialSkinningRow.add( new Interface.Text( 'Skinning' ).setWidth( '90px' ) );
 	materialSkinningRow.add( materialSkinning );
 
 	container.add( materialSkinningRow );
 
 	// map
 
-	var materialMapRow = new UI.Panel();
-	var materialMapEnabled = new UI.Checkbox( false ).onChange( update );
-	var materialMap = new UI.Texture().onChange( update );
+	var materialMapRow = new Interface.Panel();
+	var materialMapEnabled = new Interface.Checkbox( false ).onChange( update );
+	var materialMap = new Interface.Texture().onChange( update );
 
-	materialMapRow.add( new UI.Text( 'Map' ).setWidth( '90px' ) );
+	materialMapRow.add( new Interface.Text( 'Map' ).setWidth( '90px' ) );
 	materialMapRow.add( materialMapEnabled );
 	materialMapRow.add( materialMap );
 
@@ -204,11 +204,11 @@ Sidebar.Material = function ( editor ) {
 
 	// alpha map
 
-	var materialAlphaMapRow = new UI.Panel();
-	var materialAlphaMapEnabled = new UI.Checkbox( false ).onChange( update );
-	var materialAlphaMap = new UI.Texture().onChange( update );
+	var materialAlphaMapRow = new Interface.Panel();
+	var materialAlphaMapEnabled = new Interface.Checkbox( false ).onChange( update );
+	var materialAlphaMap = new Interface.Texture().onChange( update );
 
-	materialAlphaMapRow.add( new UI.Text( 'Alpha Map' ).setWidth( '90px' ) );
+	materialAlphaMapRow.add( new Interface.Text( 'Alpha Map' ).setWidth( '90px' ) );
 	materialAlphaMapRow.add( materialAlphaMapEnabled );
 	materialAlphaMapRow.add( materialAlphaMap );
 
@@ -216,11 +216,11 @@ Sidebar.Material = function ( editor ) {
 
 	// light map
 
-	var materialLightMapRow = new UI.Panel();
-	var materialLightMapEnabled = new UI.Checkbox( false ).onChange( update );
-	var materialLightMap = new UI.Texture().onChange( update );
+	var materialLightMapRow = new Interface.Panel();
+	var materialLightMapEnabled = new Interface.Checkbox( false ).onChange( update );
+	var materialLightMap = new Interface.Texture().onChange( update );
 
-	materialLightMapRow.add( new UI.Text( 'Light Map' ).setWidth( '90px' ) );
+	materialLightMapRow.add( new Interface.Text( 'Light Map' ).setWidth( '90px' ) );
 	materialLightMapRow.add( materialLightMapEnabled );
 	materialLightMapRow.add( materialLightMap );
 
@@ -228,12 +228,12 @@ Sidebar.Material = function ( editor ) {
 
 	// bump map
 
-	var materialBumpMapRow = new UI.Panel();
-	var materialBumpMapEnabled = new UI.Checkbox( false ).onChange( update );
-	var materialBumpMap = new UI.Texture().onChange( update );
-	var materialBumpScale = new UI.Number( 1 ).setWidth( '30px' ).onChange( update );
+	var materialBumpMapRow = new Interface.Panel();
+	var materialBumpMapEnabled = new Interface.Checkbox( false ).onChange( update );
+	var materialBumpMap = new Interface.Texture().onChange( update );
+	var materialBumpScale = new Interface.Number( 1 ).setWidth( '30px' ).onChange( update );
 
-	materialBumpMapRow.add( new UI.Text( 'Bump Map' ).setWidth( '90px' ) );
+	materialBumpMapRow.add( new Interface.Text( 'Bump Map' ).setWidth( '90px' ) );
 	materialBumpMapRow.add( materialBumpMapEnabled );
 	materialBumpMapRow.add( materialBumpMap );
 	materialBumpMapRow.add( materialBumpScale );
@@ -242,11 +242,11 @@ Sidebar.Material = function ( editor ) {
 
 	// normal map
 
-	var materialNormalMapRow = new UI.Panel();
-	var materialNormalMapEnabled = new UI.Checkbox( false ).onChange( update );
-	var materialNormalMap = new UI.Texture().onChange( update );
+	var materialNormalMapRow = new Interface.Panel();
+	var materialNormalMapEnabled = new Interface.Checkbox( false ).onChange( update );
+	var materialNormalMap = new Interface.Texture().onChange( update );
 
-	materialNormalMapRow.add( new UI.Text( 'Normal Map' ).setWidth( '90px' ) );
+	materialNormalMapRow.add( new Interface.Text( 'Normal Map' ).setWidth( '90px' ) );
 	materialNormalMapRow.add( materialNormalMapEnabled );
 	materialNormalMapRow.add( materialNormalMap );
 
@@ -254,11 +254,11 @@ Sidebar.Material = function ( editor ) {
 
 	// specular map
 
-	var materialSpecularMapRow = new UI.Panel();
-	var materialSpecularMapEnabled = new UI.Checkbox( false ).onChange( update );
-	var materialSpecularMap = new UI.Texture().onChange( update );
+	var materialSpecularMapRow = new Interface.Panel();
+	var materialSpecularMapEnabled = new Interface.Checkbox( false ).onChange( update );
+	var materialSpecularMap = new Interface.Texture().onChange( update );
 
-	materialSpecularMapRow.add( new UI.Text( 'Specular Map' ).setWidth( '90px' ) );
+	materialSpecularMapRow.add( new Interface.Text( 'Specular Map' ).setWidth( '90px' ) );
 	materialSpecularMapRow.add( materialSpecularMapEnabled );
 	materialSpecularMapRow.add( materialSpecularMap );
 
@@ -266,12 +266,12 @@ Sidebar.Material = function ( editor ) {
 
 	// env map
 
-	var materialEnvMapRow = new UI.Panel();
-	var materialEnvMapEnabled = new UI.Checkbox( false ).onChange( update );
-	var materialEnvMap = new UI.Texture( THREE.SphericalReflectionMapping ).onChange( update );
-	var materialReflectivity = new UI.Number( 1 ).setWidth( '30px' ).onChange( update );
+	var materialEnvMapRow = new Interface.Panel();
+	var materialEnvMapEnabled = new Interface.Checkbox( false ).onChange( update );
+	var materialEnvMap = new Interface.Texture( THREE.SphericalReflectionMapping ).onChange( update );
+	var materialReflectivity = new Interface.Number( 1 ).setWidth( '30px' ).onChange( update );
 
-	materialEnvMapRow.add( new UI.Text( 'Env Map' ).setWidth( '90px' ) );
+	materialEnvMapRow.add( new Interface.Text( 'Env Map' ).setWidth( '90px' ) );
 	materialEnvMapRow.add( materialEnvMapEnabled );
 	materialEnvMapRow.add( materialEnvMap );
 	materialEnvMapRow.add( materialReflectivity );
@@ -280,8 +280,8 @@ Sidebar.Material = function ( editor ) {
 
 	// side
 
-	var materialSideRow = new UI.Panel();
-	var materialSide = new UI.Select().setOptions( {
+	var materialSideRow = new Interface.Panel();
+	var materialSide = new Interface.Select().setOptions( {
 
 		0: 'Front',
 		1: 'Back',
@@ -289,15 +289,15 @@ Sidebar.Material = function ( editor ) {
 
 	} ).setWidth( '150px' ).setFontSize( '12px' ).onChange( update );
 
-	materialSideRow.add( new UI.Text( 'Side' ).setWidth( '90px' ) );
+	materialSideRow.add( new Interface.Text( 'Side' ).setWidth( '90px' ) );
 	materialSideRow.add( materialSide );
 
 	container.add( materialSideRow );
 
 	// shading
 
-	var materialShadingRow = new UI.Panel();
-	var materialShading = new UI.Select().setOptions( {
+	var materialShadingRow = new Interface.Panel();
+	var materialShading = new Interface.Select().setOptions( {
 
 		0: 'No',
 		1: 'Flat',
@@ -305,15 +305,15 @@ Sidebar.Material = function ( editor ) {
 
 	} ).setWidth( '150px' ).setFontSize( '12px' ).onChange( update );
 
-	materialShadingRow.add( new UI.Text( 'Shading' ).setWidth( '90px' ) );
+	materialShadingRow.add( new Interface.Text( 'Shading' ).setWidth( '90px' ) );
 	materialShadingRow.add( materialShading );
 
 	container.add( materialShadingRow );
 
 	// blending
 
-	var materialBlendingRow = new UI.Panel();
-	var materialBlending = new UI.Select().setOptions( {
+	var materialBlendingRow = new Interface.Panel();
+	var materialBlending = new Interface.Select().setOptions( {
 
 		0: 'No',
 		1: 'Normal',
@@ -324,38 +324,38 @@ Sidebar.Material = function ( editor ) {
 
 	} ).setWidth( '150px' ).setFontSize( '12px' ).onChange( update );
 
-	materialBlendingRow.add( new UI.Text( 'Blending' ).setWidth( '90px' ) );
+	materialBlendingRow.add( new Interface.Text( 'Blending' ).setWidth( '90px' ) );
 	materialBlendingRow.add( materialBlending );
 
 	container.add( materialBlendingRow );
 
 	// opacity
 
-	var materialOpacityRow = new UI.Panel();
-	var materialOpacity = new UI.Number().setWidth( '60px' ).setRange( 0, 1 ).onChange( update );
+	var materialOpacityRow = new Interface.Panel();
+	var materialOpacity = new Interface.Number().setWidth( '60px' ).setRange( 0, 1 ).onChange( update );
 
-	materialOpacityRow.add( new UI.Text( 'Opacity' ).setWidth( '90px' ) );
+	materialOpacityRow.add( new Interface.Text( 'Opacity' ).setWidth( '90px' ) );
 	materialOpacityRow.add( materialOpacity );
 
 	container.add( materialOpacityRow );
 
 	// transparent
 
-	var materialTransparentRow = new UI.Panel();
-	var materialTransparent = new UI.Checkbox().setLeft( '100px' ).onChange( update );
+	var materialTransparentRow = new Interface.Panel();
+	var materialTransparent = new Interface.Checkbox().setLeft( '100px' ).onChange( update );
 
-	materialTransparentRow.add( new UI.Text( 'Transparent' ).setWidth( '90px' ) );
+	materialTransparentRow.add( new Interface.Text( 'Transparent' ).setWidth( '90px' ) );
 	materialTransparentRow.add( materialTransparent );
 
 	container.add( materialTransparentRow );*/
 
 	// wireframe
 
-	/*var materialWireframeRow = new UI.Panel();
-	var materialWireframe = new UI.Checkbox( false ).onChange( update );
-	var materialWireframeLinewidth = new UI.Number( 1 ).setWidth( '60px' ).setRange( 0, 100 ).onChange( update );
+	/*var materialWireframeRow = new Interface.Panel();
+	var materialWireframe = new Interface.Checkbox( false ).onChange( update );
+	var materialWireframeLinewidth = new Interface.Number( 1 ).setWidth( '60px' ).setRange( 0, 100 ).onChange( update );
 
-	materialWireframeRow.add( new UI.Text( 'Wireframe' ).setWidth( '90px' ) );
+	materialWireframeRow.add( new Interface.Text( 'Wireframe' ).setWidth( '90px' ) );
 	materialWireframeRow.add( materialWireframe );
 	//materialWireframeRow.add( materialWireframeLinewidth );
 

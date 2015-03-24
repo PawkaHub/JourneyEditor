@@ -2,21 +2,21 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-var Script = function ( editor ) {
+window.Script = function ( editor ) {
 
 	var signals = editor.signals;
 
-	var container = new UI.Panel();
+	var container = new Interface.Panel();
 	container.setId( 'script' );
 	container.setPosition( 'absolute' );
 	container.setBackgroundColor( '#272822' );
 	container.setDisplay( 'none' );
 
-	var header = new UI.Panel();
+	var header = new Interface.Panel();
 	header.setPadding( '10px' );
 	container.add( header );
 
-	var title = new UI.Text().setColor( '#fff' );
+	var title = new Interface.Text().setColor( '#fff' );
 	header.add( title );
 
 	var buttonSVG = ( function () {
@@ -30,7 +30,7 @@ var Script = function ( editor ) {
 		return svg;
 	} )();
 
-	var close = new UI.Element( buttonSVG );
+	var close = new Interface.Element( buttonSVG );
 	close.setPosition( 'absolute' );
 	close.setTop( '3px' );
 	close.setRight( '1px' );

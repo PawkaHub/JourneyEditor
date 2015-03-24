@@ -4,21 +4,21 @@
 
 Menubar.File = function ( editor ) {
 
-	var container = new UI.Panel();
+	var container = new Interface.Panel();
 	container.setClass( 'menu' );
 
-	var title = new UI.Panel();
+	var title = new Interface.Panel();
 	title.setClass( 'title' );
 	title.setTextContent( 'File' );
 	container.add( title );
 
-	var options = new UI.Panel();
+	var options = new Interface.Panel();
 	options.setClass( 'options' );
 	container.add( options );
 
 	// New
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'New' );
 	option.onClick( function () {
@@ -34,7 +34,7 @@ Menubar.File = function ( editor ) {
 
 	//
 
-	options.add( new UI.HorizontalRule() );
+	options.add( new Interface.HorizontalRule() );
 
 	// Import
 
@@ -46,7 +46,7 @@ Menubar.File = function ( editor ) {
 
 	} );
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Import' );
 	option.onClick( function () {
@@ -58,11 +58,11 @@ Menubar.File = function ( editor ) {
 
 	//
 
-	options.add( new UI.HorizontalRule() );
+	options.add( new Interface.HorizontalRule() );
 
 	// Export Geometry
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Export Geometry' );
 	option.onClick( function () {
@@ -96,7 +96,7 @@ Menubar.File = function ( editor ) {
 
 	// Export Object
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Export Object' );
 	option.onClick( function () {
@@ -121,7 +121,7 @@ Menubar.File = function ( editor ) {
 
 	// Export Scene
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Export Scene' );
 	option.onClick( function () {
@@ -137,7 +137,7 @@ Menubar.File = function ( editor ) {
 
 	// Export OBJ
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Export OBJ' );
 	option.onClick( function () {
@@ -160,7 +160,7 @@ Menubar.File = function ( editor ) {
 
 	// Export STL
 
-	/*var option = new UI.Panel();
+	/*var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Export STL' );
 	option.onClick( function () {
@@ -174,11 +174,11 @@ Menubar.File = function ( editor ) {
 
 	//
 
-	//options.add( new UI.HorizontalRule() );
+	//options.add( new Interface.HorizontalRule() );
 
 	// Publish
 
-	/*var option = new UI.Panel();
+	/*var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Publish' );
 	option.onClick( function () {
@@ -263,12 +263,12 @@ Menubar.File = function ( editor ) {
 	/*
 	// Test
 
-	var option = new UI.Panel();
+	var option = new Interface.Panel();
 	option.setClass( 'option' );
 	option.setTextContent( 'Test' );
 	option.onClick( function () {
 
-		var text = new UI.Text( 'blah' );
+		var text = new Interface.Text( 'blah' );
 		editor.showDialog( text );
 
 	} );

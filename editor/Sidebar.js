@@ -2,9 +2,9 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-var Sidebar = function ( editor ) {
+window.Sidebar = function ( editor ) {
 
-	var container = new UI.Panel();
+	var container = new Interface.Panel();
 	container.setId( 'sidebar' );
 
 	//container.add( new Sidebar.Project( editor ) );

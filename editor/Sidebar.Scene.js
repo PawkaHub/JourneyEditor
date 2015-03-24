@@ -6,7 +6,7 @@ Sidebar.Scene = function ( editor ) {
 
 	var signals = editor.signals;
 
-	var container = new UI.CollapsiblePanel();
+	var container = new Interface.CollapsiblePanel();
 	container.setCollapsed( editor.config.getKey( 'ui/sidebar/scene/collapsed' ) );
 	container.onCollapsedChange( function ( boolean ) {
 
@@ -14,12 +14,12 @@ Sidebar.Scene = function ( editor ) {
 
 	} );
 
-	//container.addStatic( new UI.Text( 'Map' ) );
-	//container.add( new UI.Break() );
+	//container.addStatic( new Interface.Text( 'Map' ) );
+	//container.add( new Interface.Break() );
 
 	var ignoreObjectSelectedSignal = false;
 
-	var outliner = new UI.Outliner( editor );
+	var outliner = new Interface.Outliner( editor );
 	outliner.onChange( function () {
 
 		ignoreObjectSelectedSignal = true;
@@ -36,7 +36,7 @@ Sidebar.Scene = function ( editor ) {
 	} );
 	container.add( outliner );
 	container.dom.classList.add( 'Scene' );
-	//container.add( new UI.Break() );
+	//container.add( new Interface.Break() );
 
 	var refreshUI = function () {
 
