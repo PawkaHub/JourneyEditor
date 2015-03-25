@@ -70,11 +70,11 @@ window.Viewport = function ( editor ) {
 
 	// fog
 
-	var oldFogType = "None";
+	/*var oldFogType = "None";
 	var oldFogColor = 0xaaaaaa;
 	var oldFogNear = 1;
 	var oldFogFar = 5000;
-	var oldFogDensity = 0.00025;
+	var oldFogDensity = 0.00025;*/
 
 	// object picking
 
@@ -241,8 +241,11 @@ window.Viewport = function ( editor ) {
 				clearColor = 0xaaaaaa;
 				break;
 			case 'css/dark.css':
-				grid.setColors( 0xbbbbbb, 0x888888 );
-				clearColor = 0x333333;
+				//Change wireframe color
+				grid.material.transparent = true;
+				grid.material.opacity = 0.5;
+				grid.setColors( 0xecf0f1, 0xecf0f1 );
+				clearColor = 0x3498db;
 				break;
 
 		}
@@ -420,7 +423,7 @@ window.Viewport = function ( editor ) {
 
 	} );
 
-	signals.fogTypeChanged.add( function ( fogType ) {
+	/*signals.fogTypeChanged.add( function ( fogType ) {
 
 		if ( fogType !== oldFogType ) {
 
@@ -446,9 +449,9 @@ window.Viewport = function ( editor ) {
 
 		render();
 
-	} );
+	} );*/
 
-	signals.fogColorChanged.add( function ( fogColor ) {
+	/*signals.fogColorChanged.add( function ( fogColor ) {
 
 		oldFogColor = fogColor;
 
@@ -468,7 +471,7 @@ window.Viewport = function ( editor ) {
 
 		render();
 
-	} );
+	} );*/
 
 	signals.windowResize.add( function () {
 
@@ -560,7 +563,7 @@ window.Viewport = function ( editor ) {
 
 	}
 
-	function updateFog( root ) {
+	/*function updateFog( root ) {
 
 		if ( root.fog ) {
 
@@ -572,7 +575,7 @@ window.Viewport = function ( editor ) {
 
 		}
 
-	}
+	}*/
 
 	function animate() {
 

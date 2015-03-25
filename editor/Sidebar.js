@@ -6,6 +6,7 @@ window.Sidebar = function ( editor ) {
 
 	var container = new Interface.Panel();
 	container.setId( 'sidebar' );
+	container.setClass( 'Panel hidden' );
 
 	//container.add( new Sidebar.Project( editor ) );
 	container.add( new Sidebar.Scene( editor ) );

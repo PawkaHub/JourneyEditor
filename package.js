@@ -10,6 +10,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.0.4');
   api.use(['stylus']);
   api.use(['coffeescript']);
+  api.use(['pagebakers:ionicons']);
 
   //Lib
   api.addFiles('build/three.min.js','client');
@@ -32,6 +33,12 @@ Package.onUse(function(api) {
   api.addFiles('libs/interface.three.js','client');
   api.addFiles('libs/app.js','client');
 
+  //Loaders
+  api.addFiles('loaders/OBJLoader.js','client');
+
+  //Exporters
+  api.addFiles('exporters/OBJExporter.js','client');
+
   //Editor
   api.addFiles('editor/Player.js','client');
   api.addFiles('editor/Script.js','client');
@@ -43,7 +50,18 @@ Package.onUse(function(api) {
   //Menubar
   api.addFiles('editor/Menubar.js','client');
   api.addFiles('editor/Menubar.File.js','client');
-  api.addFiles('editor/Menubar.Add.js','client');
+  //Broken Out Menu Bar Items
+  api.addFiles('editor/Menubar.Import.js','client');
+  api.addFiles('editor/Menubar.ExportOBJ.js','client');
+
+  //api.addFiles('editor/Menubar.Add.js','client');
+  //Broken out add bar items
+  api.addFiles('editor/Menubar.AddGroup.js','client');
+  api.addFiles('editor/Menubar.AddPlane.js','client');
+  api.addFiles('editor/Menubar.AddBox.js','client');
+  api.addFiles('editor/Menubar.AddCylinder.js','client');
+  api.addFiles('editor/Menubar.AddDirectionalLight.js','client');
+  api.addFiles('editor/Menubar.AddPerspectiveCamera.js','client');
 
   //Sidebar
   api.addFiles('editor/Sidebar.js','client');
@@ -64,5 +82,5 @@ Package.onUse(function(api) {
   api.addFiles('editor.styl');
 
   //Editor Initialization
-  api.addFiles('init.js','client');
+  api.addFiles('init.coffee','client');
 });

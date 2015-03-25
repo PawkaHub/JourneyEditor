@@ -120,8 +120,8 @@ textarea, input
 
 .Outliner
   color rgba(192, 197, 206, 0.5)
-  background darkest
-  padding 5px 5px 5px 0
+  background dark
+  padding 0 5px 0 0
   width 100%
   height 140px
   font-size 12px
@@ -172,17 +172,61 @@ textarea, input
 #menubar
   position absolute
   width 240px
-  height 32px
-  background dark
+  height 30px
+  background medium
   padding 0px
   margin 0px
   right 0px
   top 0px
   z-index 1
+  transition all 300ms ease-in-out
+  &.hidden
+    transform translate3d(240px,0,0)
   .menu
     float left
     cursor pointer
-    padding-right 8px
+    width 30px
+    height 30px
+    color text
+    text-align center
+    line-height 32px
+    font-size 16px
+    font-family 'Ionicons'
+    transition all 100ms ease-in-out
+    position relative
+    &:after
+      transition all 100ms ease-in-out
+    &.import:after
+      content '\f4ca'
+      font-size 20px
+    &.export:after
+      content '\f41f'
+      font-size 20px
+    &.group:after
+      content '\f229'
+    &.plane:after
+      content ''
+      position absolute
+      top 9px
+      right 8px
+      left 8px
+      bottom 7px
+      border 1px solid text
+    &.box:after
+      content '\f24f'
+    &.cylinder:after
+      content '\f21b'
+    &.light:after
+      content '\f4b7'
+      font-size 24px
+      line-height 32px
+    &.camera:after
+      content '\f4cd'
+      font-size 20px
+    &:hover
+      color halfText
+      &.plane:after
+        border 1px solid halfText
     &.right
       float right
       cursor auto
@@ -217,12 +261,15 @@ textarea, input
 #sidebar
   position absolute
   right 0px
-  top 32px
+  top 30px
   bottom 0px
   width 240px
-  background-color dark
+  background-color medium
   overflow-y auto
   overflow-x hidden
+  transition all 300ms ease-in-out
+  &.hidden
+    transform translate3d(240px,0,0)
   *
     vertical-align middle
   input
@@ -231,7 +278,7 @@ textarea, input
       &::selection
         background transparent
   select
-    background dark
+    background halfDark
     &:focus
       outline none
   .Panel
@@ -258,10 +305,9 @@ textarea, input
   & > .Panel
     color rgb(192, 197, 206)
     margin-bottom 0
-    border-top 1px solid medium
 
 #sidebar input, #sidebar textarea, #sidebar select
-  background darkest
+  background halfDark
   border 1px solid transparent
   color rgb(192, 197, 206)
   padding 0 5px 0 5px
