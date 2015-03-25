@@ -49,13 +49,12 @@ Package.onUse(function(api) {
 
   //Menubar
   api.addFiles('editor/Menubar.js','client');
-  api.addFiles('editor/Menubar.File.js','client');
-  //Broken Out Menu Bar Items
+  //api.addFiles('editor/Menubar.File.js','client');
+  //Import/Export
   api.addFiles('editor/Menubar.Import.js','client');
   api.addFiles('editor/Menubar.ExportOBJ.js','client');
 
-  //api.addFiles('editor/Menubar.Add.js','client');
-  //Broken out add bar items
+  //Add Objects
   api.addFiles('editor/Menubar.AddGroup.js','client');
   api.addFiles('editor/Menubar.AddPlane.js','client');
   api.addFiles('editor/Menubar.AddBox.js','client');

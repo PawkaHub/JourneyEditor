@@ -148,6 +148,12 @@ Editor.prototype = {
 
 		} );
 
+		console.log ('object',object);
+		//Set position
+		window.object = object;
+
+		object.position.y = 50;
+
 		this.scene.add( object );
 
 		this.signals.objectAdded.dispatch( object );
