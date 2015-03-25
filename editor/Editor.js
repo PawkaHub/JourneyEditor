@@ -149,10 +149,11 @@ Editor.prototype = {
 		} );
 
 		console.log ('object',object);
-		//Set position
-		window.object = object;
 
-		object.position.y = 50;
+		//Only reposition non planes
+		if (object.geometry && object.geometry.type !== "PlaneGeometry") {
+			object.position.y = 50;
+		}
 
 		this.scene.add( object );
 
