@@ -94,25 +94,11 @@ window.Editor = function () {
 
 Editor.prototype = {
 
-	setTheme: function ( value ) {
-
-		//document.getElementById( 'theme' ).href = value;
-
-		this.signals.themeChanged.dispatch( value );
-
-	},
-
-	/*
-	showDialog: function ( value ) {
-
-		this.signals.showDialog.dispatch( value );
-
-	},
-	*/
-
 	//
 
 	setScene: function ( scene ) {
+
+		console.log('setScene!',scene);
 
 		this.scene.uuid = scene.uuid;
 		this.scene.name = scene.name;
@@ -446,11 +432,15 @@ Editor.prototype = {
 
 		var loader = new THREE.ObjectLoader();
 
+		console.log('pasta');
+
 		// backwards
 
 		if ( json.scene === undefined ) {
 
 			var scene = loader.parse( json );
+
+			console.log('pasta');
 
 			this.setScene( scene );
 

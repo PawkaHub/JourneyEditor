@@ -232,7 +232,7 @@ window.Viewport = function ( editor ) {
 
 	} );
 
-	signals.themeChanged.add( function ( value ) {
+	/*signals.themeChanged.add( function ( value ) {
 
 		switch ( value ) {
 
@@ -254,7 +254,7 @@ window.Viewport = function ( editor ) {
 
 		render();
 
-	} );
+	} );*/
 
 	signals.transformModeChanged.add( function ( mode ) {
 
@@ -423,56 +423,6 @@ window.Viewport = function ( editor ) {
 
 	} );
 
-	/*signals.fogTypeChanged.add( function ( fogType ) {
-
-		if ( fogType !== oldFogType ) {
-
-			if ( fogType === "None" ) {
-
-				scene.fog = null;
-
-			} else if ( fogType === "Fog" ) {
-
-				scene.fog = new THREE.Fog( oldFogColor, oldFogNear, oldFogFar );
-
-			} else if ( fogType === "FogExp2" ) {
-
-				scene.fog = new THREE.FogExp2( oldFogColor, oldFogDensity );
-
-			}
-
-			updateMaterials();
-
-			oldFogType = fogType;
-
-		}
-
-		render();
-
-	} );*/
-
-	/*signals.fogColorChanged.add( function ( fogColor ) {
-
-		oldFogColor = fogColor;
-
-		updateFog( scene );
-
-		render();
-
-	} );
-
-	signals.fogParametersChanged.add( function ( near, far, density ) {
-
-		oldFogNear = near;
-		oldFogFar = far;
-		oldFogDensity = density;
-
-		updateFog( scene );
-
-		render();
-
-	} );*/
-
 	signals.windowResize.add( function () {
 
 		camera.aspect = container.dom.offsetWidth / container.dom.offsetHeight;
@@ -511,15 +461,14 @@ window.Viewport = function ( editor ) {
 
 	} );
 
-	//
+	// Create Renderer
 
 	var createRenderer = function ( type, antialias ) {
-
-		if ( type === 'WebGLRenderer' && System.support.webgl === false ) {
-
-			type = 'CanvasRenderer';
-
-		}
+		//Change wireframe color
+		grid.material.transparent = true;
+		grid.material.opacity = 0.5;
+		grid.setColors( 0xecf0f1, 0xecf0f1 );
+		clearColor = 0x3498db;
 
 		var renderer = new THREE[ type ]( { antialias: antialias } );
 		renderer.setClearColor( clearColor );
@@ -528,16 +477,14 @@ window.Viewport = function ( editor ) {
 		renderer.autoUpdateScene = false;
 
 		return renderer;
-
 	};
 
-	var clearColor;
 	var renderer = createRenderer( editor.config.getKey( 'project/renderer' ), editor.config.getKey( 'project/renderer/antialias' ) );
 	container.dom.appendChild( renderer.domElement );
 
 	animate();
 
-	//
+	// Update Materials
 
 	function updateMaterials() {
 
@@ -562,20 +509,6 @@ window.Viewport = function ( editor ) {
 		} );
 
 	}
-
-	/*function updateFog( root ) {
-
-		if ( root.fog ) {
-
-			root.fog.color.setHex( oldFogColor );
-
-			if ( root.fog.near !== undefined ) root.fog.near = oldFogNear;
-			if ( root.fog.far !== undefined ) root.fog.far = oldFogFar;
-			if ( root.fog.density !== undefined ) root.fog.density = oldFogDensity;
-
-		}
-
-	}*/
 
 	function animate() {
 
